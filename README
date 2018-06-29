@@ -1,0 +1,46 @@
+Workspace testing/example
+
+Workspace commands:
+
+terraform workspace list
+terraform workspace new [workspace name]
+terraform workspace select [workspace name]
+
+The current workspace is available as ${terraform.workspace}
+
+Need to test the idea about merging dev and prod, but should work fine as long as you are in the right workspace and using the right aws creds surely??
+(or aws-profile etc)
+
+
+= Running
+
+So to run there are some differences, dev example:
+
+$ terraform workspace select development
+$ terraform plan -var-file=development.tfvars
+
+
+
+
+Terraform will perform the following actions:
+
+  + aws_s3_bucket.some_s3_bucket
+      id:                          <computed>
+      acceleration_status:         <computed>
+      acl:                         "public"
+      arn:                         <computed>
+      bucket:                      "development-s3-bucket-for-me"
+      bucket_domain_name:          <computed>
+      bucket_regional_domain_name: <computed>
+      force_destroy:               "false"
+      hosted_zone_id:              <computed>
+      region:                      <computed>
+      request_payer:               <computed>
+      tags.%:                      "1"
+      tags.Name:                   "development-s3-bucket-for-me"
+      versioning.#:                <computed>
+      website_domain:              <computed>
+      website_endpoint:            <computed>
+
+
+Plan: 1 to add, 0 to change, 0 to destroy.
